@@ -1,6 +1,6 @@
 # NVIMUX
 
-Nvimux allows neovim to work as a tmux replacement.
+Nvimux maps a set of keybindings that mirror those in TMUX.
 
 It does so by mapping tmuxs keybindings to neovim, using its windows, buffers and terminals.
 
@@ -8,9 +8,7 @@ It does so by mapping tmuxs keybindings to neovim, using its windows, buffers an
 
 Nvimux is built on [lua](https://github.com/neovim/neovim/pull/4411), meaning that you must use a somewhat recent version of neovim.
 
-To configure nvimux, you can use both lua and viml to configure, though the first is much preferred.
-
-A lua-based configuration for nvimux is as follows:
+Use lua to configure nvimux.
 
 ```lua
 lua << EOF
@@ -44,20 +42,54 @@ In case you don't set configuration options, please do run the following for nvi
 lua require('nvimux').bootstrap()
 ```
 
-On viml, the variables can be defined using the same name, prepending `nvimux_` to it:
-
-```viml
-  let g:nvimux_prefix = '<C-a>',
-  let g:nvimux_open_term_by_default = true,
-  let g:nvimux_new_window_buffer = 'single',
-  let g:nvimux_quickterm_direction = 'botright',
-  let g:nvimux_quickterm_orientation = 'vertical',
-  let g:nvimux_quickterm_scope = 't',
-  let g:nvimux_quickterm_size = '80',
-```
-
 ## Credits & Stuff
 
-I'm borking around with it because I only want the mappings right now.
 This plugin is was originally developed by [Henry Kupty](http://github.com/hkupty) and it's completely free to use.
 The rationale behind the idea is described [in this article](http://hkupty.github.io/2016/Ditching-TMUX/).
+
+## Purpose of this fork:
+There are a couple things I want to address:
+
+- stability: 
+	- your configuration should not change much when changes come out.
+- bare bones: 
+	- there's some fancy (and cool!) 'quickterm' functionality in the
+	original repo. That stuff is cool, but to my eye doesn't belong in plugin.
+	(Full disclosure: I may be biased, as I don't use that functionality either.)
+- consistency/cleanliness: 
+	- configuration should do what you think it will. I.e.,
+	  `nvimux_open_term_by_default` should effect vertical and horizontal
+	  splits, not just tabs.
+	- I don't really see a compelling reason to have two separate commands,
+	  `nvimux.config.set_all` and `nvimux.bindings.bind_all`. I imagine
+	  replacing both of these with something like: `nvimux.config`, which will
+	  take a dictionary with two keys, `settings` and `bindings`
+- tweaks: 
+	- I'd really like a chordal prefix. Save the pinky!
+
+## To Do:
+- Add:
+	- documentation:
+		- on bind_all
+			- subsume call to nvimux_custom_bindings
+- Fix:
+	- variables:
+		- name: g:nvimux_open_term_by_default
+		- problem: should not behave this way only for prefix-c
+- Remove:
+	- commands:
+		- NvimuxToggleTerm
+	- functions:
+		- NvimuxToggleTermFunc()
+		- NvimuxRawToggleTerm
+	- variables:
+		- g:nvimux_no_neoterm
+		- g:nvimux_quickterm_provider
+		- g:nvimux_quickterm_scope
+		- g:nvimux_quickterm_direction
+		- g:nvimux_quickterm_orientation
+		- g:nvimux_quickterm_size
+		- g:nvimux_override_{command}
+		- g:nvimux_vertical_split
+		- g:nvimux_vertical_split
+		- g:nvimux_horizontal_split
