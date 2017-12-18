@@ -4,14 +4,9 @@ Nvimux allows neovim to work as a tmux replacement.
 
 It does so by mapping tmuxs keybindings to neovim, using its windows, buffers and terminals.
 
-### Support nvimux
-Support nvimux development by sending me some bitcoins at `137gRFaXxJmyV23FA9PZZ6Fp8Pvs11gPPV`.
-
 ## Configuring
 
 Nvimux is built on [lua](https://github.com/neovim/neovim/pull/4411), meaning that you must use a somewhat recent version of neovim.
-
-For the older version, based on viml, refer to [the legacy branch](https://github.com/hkupty/nvimux/tree/legacy). The legacy branch won't be maintained but will be kept for those who prefer it.
 
 To configure nvimux, you can use both lua and viml to configure, though the first is much preferred.
 
@@ -63,6 +58,6 @@ On viml, the variables can be defined using the same name, prepending `nvimux_` 
 
 ## Credits & Stuff
 
-This plugin is developed and maintained by [Henry Kupty](http://github.com/hkupty) and it's completely free to use.
+I'm borking around with it because I only want the mappings right now.
+This plugin is was originally developed by [Henry Kupty](http://github.com/hkupty) and it's completely free to use.
 The rationale behind the idea is described [in this article](http://hkupty.github.io/2016/Ditching-TMUX/).
-Consider helping by opening issues, Pull Requests or influencing your friends and colleagues to use!
