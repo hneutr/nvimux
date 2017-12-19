@@ -5,6 +5,8 @@ nvimux.bindings = {}
 nvimux.term = {}
 nvimux.term.prompt = {}
 
+-- testing
+
 --[[
 Nvimux: Neovim as a terminal multiplexer.
 
